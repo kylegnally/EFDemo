@@ -110,6 +110,51 @@ namespace cis237_inclass5
             Console.WriteLine(carToFind.id + " " + carToFind.make + " " + carToFind.model);
 
             //***********************************************
+            // Update a Car from the database
+            //***********************************************
+            // Get a car out of the database that we would like to update
+            Car carToFindForUpdate = carsTestEntities.Cars.Find("88888");
+
+            // Output the car to find
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("About to update a existing car");
+            Console.WriteLine(
+                carToFindForUpdate.id + " " +
+                carToFindForUpdate.make + " " +
+                carToFindForUpdate.model
+            );
+            Console.WriteLine("Doing the update now");
+
+            // Update some of the properties of the car we found.
+            // Do not need to update all of them if we don't want to.
+            carToFindForUpdate.make = "Nissan";
+            carToFindForUpdate.model = "GT-RRRRRR";
+            carToFindForUpdate.horsepower = 1250;
+            carToFindForUpdate.cylinders = 16;
+
+            // Save the changes to the database. Since when we pulled out the one to
+            // update, all we were really doing was getting a reference to the one in
+            // the collection we wanted to update. There is no need to 'put' the car
+            // back into the Cars collection. It is still there. All we have to do
+            // is save the changes on the collection.
+            carsTestEntities.SaveChanges();
+
+            // Get a car out of the database that we would like to update
+            carToFindForUpdate = carsTestEntities.Cars.Find("88888");
+
+            // Output the car to find
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("Outputing the updated car that was retrieved from the db");
+            Console.WriteLine(
+                carToFindForUpdate.id + " " +
+                carToFindForUpdate.make + " " +
+                carToFindForUpdate.model
+            );
+
+
+            //***********************************************
             // Delete a Car from the database
             //***********************************************
 
